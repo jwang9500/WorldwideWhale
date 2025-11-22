@@ -35,3 +35,5 @@ animation = &"walk"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1jxqw")
+
+[connection signal="body_entered" from="." to="." method="onBodyEntered"]

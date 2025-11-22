@@ -2,6 +2,16 @@ using Godot;
 
 public partial class Player : Area2D
 {
+	[Signal]
+	public delegate void HitEventHandler();
+	
+	private void onBodyEntered(Node2D body)
+	{
+		EmitSignal(SignalName.Hit);
+		// Must be deferred as we can't change physics properties on a physics callback.
+		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
+	
 	[Export]
 	public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
 
@@ -62,5 +72,11 @@ public partial class Player : Area2D
 		}
 		
 	}
-
+	
+	public void Start(Vector2 position)
+	{
+		Position = position;
+		Show();
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
+	}
 }
