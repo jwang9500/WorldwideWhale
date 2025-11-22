@@ -27,7 +27,6 @@ public partial class Player : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Vector2.Zero;
-		GD.Print("Physics running");
 
 		if (Input.IsActionPressed("moveRight")) velocity.X += 1;
 		if (Input.IsActionPressed("moveLeft")) velocity.X -= 1;
