@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dq3oo40tm38u8"]
+[gd_scene load_steps=8 format=3 uid="uid://dq3oo40tm38u8"]
 
 [ext_resource type="Texture2D" uid="uid://dikv8pd8ecwpx" path="res://art/playerGrey_up1.png" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://dfae38asi4i3o" path="res://Player.cs" id="1_sweqy"]
 [ext_resource type="Texture2D" uid="uid://by60vgegfjtwp" path="res://art/playerGrey_up2.png" id="2_sweqy"]
 [ext_resource type="Texture2D" uid="uid://cp0upx5cogyrf" path="res://art/playerGrey_walk1.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://bik5pudgwwryb" path="res://art/playerGrey_walk2.png" id="4_1jxqw"]
@@ -34,9 +35,10 @@ animations = [{
 radius = 54.0
 height = 137.0
 
-[node name="Area2D" type="Area2D"]
-position = Vector2(1382, 751)
+[node name="Player" type="Area2D"]
+position = Vector2(403, 213)
 scale = Vector2(2, 2)
+script = ExtResource("1_sweqy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
