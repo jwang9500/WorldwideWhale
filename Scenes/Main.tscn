@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://b2u3x7thbicos"]
+[gd_scene load_steps=2 format=3 uid="uid://b2u3x7thbicos"]
+
+[ext_resource type="PackedScene" uid="uid://dq3oo40tm38u8" path="res://Scenes/player.tscn" id="1_r150o"]
 
 [node name="Main" type="Node"]
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(100, 100)
+
+[node name="Player" parent="." instance=ExtResource("1_r150o")]
