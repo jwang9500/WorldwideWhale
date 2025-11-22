@@ -1,17 +1,17 @@
 using Godot;
 
-public partial class Player : Area2D
+public partial class Player : CharacterBody2D
 {
 	[Signal]
 	public delegate void HitEventHandler();
-	
+
 	private void onBodyEntered(Node2D body)
 	{
 		EmitSignal(SignalName.Hit);
 		// Must be deferred as we can't change physics properties on a physics callback.
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
 	}
-	
+
 	[Export]
 	public int Speed { get; set; } = 400; // How fast the player will move (pixels/sec).
 
@@ -20,59 +20,47 @@ public partial class Player : Area2D
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
+		//SetProcess(true);
+		//SetPhysicsProcess(true);
 	}
 
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
-		var velocity = Vector2.Zero; // The player's movement vector.
+		Vector2 velocity = Vector2.Zero;
+		GD.Print("Physics running");
 
-		if (Input.IsActionPressed("moveRight"))
-		{
-			velocity.X += 1;
-		}
+		if (Input.IsActionPressed("moveRight")) velocity.X += 1;
+		if (Input.IsActionPressed("moveLeft")) velocity.X -= 1;
+		if (Input.IsActionPressed("moveDown")) velocity.Y += 1;
+		if (Input.IsActionPressed("moveUp")) velocity.Y -= 1;
 
-		if (Input.IsActionPressed("moveLeft"))
-		{
-			velocity.X -= 1;
-		}
-
-		if (Input.IsActionPressed("moveDown"))
-		{
-			velocity.Y += 1;
-		}
-
-		if (Input.IsActionPressed("moveUp"))
-		{
-			velocity.Y -= 1;
-		}
+		Vector2 direction = velocity;
 
 		var animatedSprite2D = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
-		if (velocity.Length() > 0)
+		if (direction.Length() > 0)
 		{
-			velocity = velocity.Normalized() * Speed;
+			direction = direction.Normalized();
+			Velocity = direction * Speed;
 			animatedSprite2D.Play();
 		}
 		else
 		{
+			Velocity = Vector2.Zero;
 			animatedSprite2D.Stop();
 		}
-		Position += velocity * (float)delta;
-		Position = new Vector2(
-			x: Mathf.Clamp(Position.X, 0, ScreenSize.X),
-			y: Mathf.Clamp(Position.Y, 0, ScreenSize.Y)
-		);
 
-		if (velocity.X != 0)
+		Velocity = direction * Speed;
+		MoveAndSlide();
+
+		// Flip sprite
+		if (Velocity.X != 0)
 		{
 			animatedSprite2D.Animation = "walk";
 			animatedSprite2D.FlipV = false;
-			// See the note below about the following boolean assignment.
-			animatedSprite2D.FlipH = velocity.X < 0;
+			animatedSprite2D.FlipH = Velocity.X < 0;
 		}
-		
 	}
-	
 	public void Start(Vector2 position)
 	{
 		Position = position;

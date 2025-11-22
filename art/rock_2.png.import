@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tege3dyc3v1o"
-path="res://.godot/imported/Whale_Background-removebg-preview.png-91630ccbd211bd9310439469e40661dd.ctex"
+uid="uid://cf13vmqeufrwg"
+path="res://.godot/imported/rock_2.png-ca88b84ba924b191c36e6a328fd8e8c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Whale_Background-removebg-preview.png"
-dest_files=["res://.godot/imported/Whale_Background-removebg-preview.png-91630ccbd211bd9310439469e40661dd.ctex"]
+source_file="res://art/rock_2.png"
+dest_files=["res://.godot/imported/rock_2.png-ca88b84ba924b191c36e6a328fd8e8c8.ctex"]
 
 [params]
 
