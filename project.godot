@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="WHACK25"
-run/main_scene="uid://dq3oo40tm38u8"
+run/main_scene="uid://b2u3x7thbicos"
 config/features=PackedStringArray("4.5", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=2
+window/stretch/mode="viewport"
 
 [dotnet]
 
