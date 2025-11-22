@@ -1,49 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://dq3oo40tm38u8"]
+[gd_scene load_steps=6 format=3 uid="uid://dq3oo40tm38u8"]
 
-[ext_resource type="Texture2D" uid="uid://dikv8pd8ecwpx" path="res://art/playerGrey_up1.png" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://dfae38asi4i3o" path="res://Player.cs" id="1_sweqy"]
-[ext_resource type="Texture2D" uid="uid://by60vgegfjtwp" path="res://art/playerGrey_up2.png" id="2_sweqy"]
-[ext_resource type="Texture2D" uid="uid://cp0upx5cogyrf" path="res://art/playerGrey_walk1.png" id="3_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://bik5pudgwwryb" path="res://art/playerGrey_walk2.png" id="4_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://blpqjvm2wweos" path="res://art/whale_eyes_closed.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://vl3b4y0o7vcr" path="res://art/whale_eyes_open.png" id="5_2hs0m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_dw050"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_hqtel")
+"texture": ExtResource("4_sweqy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_sweqy")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_2hs0m")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_1jxqw")
+"texture": ExtResource("5_2hs0m")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b26j0"]
-radius = 54.0
-height = 137.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1jxqw"]
+radius = 15.5
+height = 69.0
 
 [node name="Player" type="Area2D"]
-position = Vector2(403, 213)
+position = Vector2(405, 167)
 scale = Vector2(2, 2)
 script = ExtResource("1_sweqy")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dw050")
-animation = &"up"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_b26j0")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1jxqw")
