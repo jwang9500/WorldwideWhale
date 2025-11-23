@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgevrl6m5pst8"
-path="res://.godot/imported/enemyWalking_2.png-67c480ed60c35e95f5acb0436246b935.ctex"
+uid="uid://duugocexrllij"
+path="res://.godot/imported/whale-1.png-80333cb00eb5db6c0e1ce10cbc64223a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/enemyWalking_2.png"
-dest_files=["res://.godot/imported/enemyWalking_2.png-67c480ed60c35e95f5acb0436246b935.ctex"]
+source_file="res://art/whale-1.png"
+dest_files=["res://.godot/imported/whale-1.png-80333cb00eb5db6c0e1ce10cbc64223a.ctex"]
 
 [params]
 
