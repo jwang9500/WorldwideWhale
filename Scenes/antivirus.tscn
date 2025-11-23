@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://e07gsap0o36b"]
+
+[ext_resource type="Texture2D" uid="uid://bh7jaqdmh3pt1" path="res://art/antivirus.png" id="1_c7wa6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mou4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_c7wa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rwepl"]
+radius = 165.73392
+height = 481.53455
+
+[node name="Antivirus" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(550.99994, 310)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_4mou4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(546, 303)
+rotation = -0.5235988
+shape = SubResource("CapsuleShape2D_rwepl")
