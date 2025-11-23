@@ -2924,9 +2924,11 @@ position = Vector2(150, 100)
 
 [node name="Player" parent="." instance=ExtResource("1_r150o")]
 position = Vector2(164, 102)
+scale = Vector2(0.01, 0.01)
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
 process_mode = 2
+visible = false
 
 [node name="Menu" type="ColorRect" parent="PauseMenu"]
 anchors_preset = 15
