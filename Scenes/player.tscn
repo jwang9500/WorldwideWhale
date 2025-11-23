@@ -1,17 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw87i606c3a5x"]
+[gd_scene load_steps=8 format=3 uid="uid://bw87i606c3a5x"]
 
 [ext_resource type="Script" uid="uid://cow0fitrvideg" path="res://Scripts/Player.cs" id="1_6t5aa"]
-[ext_resource type="Texture2D" uid="uid://blpqjvm2wweos" path="res://art/whale_eyes_closed.png" id="2_vgqql"]
-[ext_resource type="Texture2D" uid="uid://vl3b4y0o7vcr" path="res://art/whale_eyes_open.png" id="3_fkybt"]
+[ext_resource type="Texture2D" uid="uid://duugocexrllij" path="res://art/whale-1.png" id="2_6t5aa"]
+[ext_resource type="Texture2D" uid="uid://c3ypfeh5ggbce" path="res://art/whale-2.png" id="3_vgqql"]
+[ext_resource type="Script" uid="uid://dmrppy6l4vm8m" path="res://Scripts/Hitbox.cs" id="4_vgqql"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cvnsp"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_fkybt")
+"texture": ExtResource("2_6t5aa")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_vgqql")
+"texture": ExtResource("3_vgqql")
 }],
 "loop": true,
 "name": &"walk",
@@ -22,11 +23,17 @@ animations = [{
 radius = 15.5
 height = 65.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6t5aa"]
+radius = 19.0
+height = 70.0
+
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.25, 0.25)
 script = ExtResource("1_6t5aa")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-0.99999905, 0)
+scale = Vector2(0.01, 0.01)
 sprite_frames = SubResource("SpriteFrames_cvnsp")
 animation = &"walk"
 
@@ -34,5 +41,13 @@ animation = &"walk"
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_cvnsp")
 
+[node name="Hitbox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("4_vgqql")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, -1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_6t5aa")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(5, 5)

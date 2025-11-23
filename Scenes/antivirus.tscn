@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://boboc1wlnq1w5"]
+
+[ext_resource type="Script" uid="uid://ck3v7q8tgx3wy" path="res://Scripts/Antivirus.cs" id="1_1o7x2"]
+[ext_resource type="Texture2D" uid="uid://bh7jaqdmh3pt1" path="res://art/antivirus.png" id="2_h0jw8"]
+[ext_resource type="Script" uid="uid://dni2y0shyb0ox" path="res://Scripts/Hurtbox.cs" id="3_h0jw8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_trote"]
+radius = 220.00227
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ahnt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h0jw8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Antivirus" type="CharacterBody2D"]
+position = Vector2(3, -1)
+script = ExtResource("1_1o7x2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(278, 270)
+shape = SubResource("CircleShape2D_trote")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(264, 261)
+scale = Vector2(0.15494792, 0.15494792)
+sprite_frames = SubResource("SpriteFrames_2ahnt")
+
+[node name="Hurtbox" type="Area2D" parent="." groups=["enemy"]]
+position = Vector2(24, 33)
+collision_layer = 2
+script = ExtResource("3_h0jw8")
+
+[node name="CollisionHitbox" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(249, 240)
+shape = SubResource("CircleShape2D_trote")
