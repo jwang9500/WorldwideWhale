@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://b2u3x7thbicos"]
+[gd_scene load_steps=16 format=4 uid="uid://b2u3x7thbicos"]
 
 [ext_resource type="Script" uid="uid://tan06ryhutmt" path="res://Scripts/Main.cs" id="1_jw32o"]
 [ext_resource type="PackedScene" uid="uid://bw87i606c3a5x" path="res://Scenes/player.tscn" id="1_r150o"]
@@ -2902,6 +2902,8 @@ sources/2 = SubResource("TileSetAtlasSource_grg3l")
 sources/3 = SubResource("TileSetAtlasSource_frkhe")
 sources/4 = SubResource("TileSetAtlasSource_vy5pj")
 
+[sub_resource type="FontVariation" id="FontVariation_50glp"]
+
 [node name="Main" type="Node"]
 script = ExtResource("1_jw32o")
 
@@ -2922,3 +2924,61 @@ position = Vector2(150, 100)
 
 [node name="Player" parent="." instance=ExtResource("1_r150o")]
 position = Vector2(164, 102)
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+process_mode = 2
+
+[node name="Menu" type="ColorRect" parent="PauseMenu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.15550795, 0.35693526, 0.52356064, 1)
+
+[node name="Container" type="ColorRect" parent="PauseMenu/Menu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -540.0
+offset_top = -300.0
+offset_right = 540.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21468493, 0.58763194, 0.8435449, 1)
+
+[node name="Label" type="Label" parent="PauseMenu/Menu/Container"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_50glp")
+theme_override_font_sizes/font_size = 35
+text = "
+Game Paused"
+
+[node name="Resume" type="Button" parent="PauseMenu/Menu/Container"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume"
+
+[connection signal="pressed" from="PauseMenu/Menu/Container/Resume" to="." method="onResumePressed"]

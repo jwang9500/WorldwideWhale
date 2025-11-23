@@ -20,12 +20,17 @@ public partial class Player : CharacterBody2D
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-		//SetProcess(true);
-		//SetPhysicsProcess(true);
+		ProcessMode = Node.ProcessModeEnum.Always;
 	}
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (GetTree().Paused)
+	{
+		Velocity = Vector2.Zero;
+		return;            
+	}
+
 		Vector2 velocity = Vector2.Zero;
 
 		if (Input.IsActionPressed("moveRight")) velocity.X += 1;
@@ -49,7 +54,6 @@ public partial class Player : CharacterBody2D
 			animatedSprite2D.Stop();
 		}
 
-		Velocity = direction * Speed;
 		MoveAndSlide();
 
 		// Flip sprite
